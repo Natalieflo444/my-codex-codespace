@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Counter</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      font: 16px system-ui, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+    main { text-align: center; }
+    #count { margin: 16px 0; font-size: 4rem; }
+    button {
+      margin: 4px;
+      padding: 10px 18px;
+      border: 0;
+      border-radius: 6px;
+      background: #222;
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover { background: #444; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Counter</h1>
+    <p id="count" aria-live="polite">0</p>
+    <button id="decrease" type="button">−</button>
+    <button id="reset" type="button">Reset</button>
+    <button id="increase" type="button">+</button>
+  </main>
+  <script>
+    let count = 0;
+    const display = document.querySelector("#count");
+
+    function update(value) {
+      count = value;
+      display.textContent = count;
+    }
+
+    document.querySelector("#decrease").addEventListener("click", () => update(count - 1));
+    document.querySelector("#reset").addEventListener("click", () => update(0));
+    document.querySelector("#increase").addEventListener("click", () => update(count + 1));
+  </script>
+</body>
+</html>
